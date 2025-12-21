@@ -1,8 +1,10 @@
-### Hi there 👋
+### Hi, I’m Carlos 👋
 
-I'm a Software Engineer from California.
+Senior Software Engineer based in California, currently working on high-traffic, user-facing web products at LinkedIn.
 
-- 🔭 I’m currently working as a Frontend Software Engineer at LinkedIn.
-- 👨🏻‍💻 In my free time, I collaborate with some friends on [SeeFood](http://seefoodapp.com), a website/app that provides digital menus for restaurants to effortlessly showcase their dishes.
-- 🌱 I’m currently learning React, Next.js, TypeScript, and occasionally dabbling in some backend projects.
-- 📫 Connect with me on [LinkedIn](https://linkedin.com/in/estrrada)!
+- 💼 Senior Software Engineer on Premium acquisition and signup flows, with a focus on frontend architecture, TypeScript, and experimentation-driven development
+- 🧩 Increasingly working across the stack, contributing to backend APIs and end-to-end feature delivery
+- 🧠 Experienced in technical planning, tradeoff-driven decision-making, and close collaboration with Product and Design
+- 🛠 Previously built and maintained production web applications using React, Angular, Ember, GraphQL, and SQL
+
+📫 Connect with me on [LinkedIn](https://linkedin.com/in/caestrella)

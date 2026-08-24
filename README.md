@@ -2,6 +2,7 @@
 
 Senior Software Engineer based in California, currently working on high-traffic, user-facing web products at LinkedIn.
 
+- 🏠 I'm currently working on ***Den***, an iPhone app that helps families, couples, roommates, or anyone else who shares a space, to manage their shared tasks. Visit [dentasks.com](https://dentasks.com) to learn more.
 - 💼 Senior Software Engineer on Premium acquisition and signup flows, with a focus on frontend architecture, TypeScript, and experimentation-driven development
 - 🧩 Increasingly working across the stack, contributing to backend APIs and end-to-end feature delivery
 - 🧠 Experienced in technical planning, tradeoff-driven decision-making, and close collaboration with Product and Design

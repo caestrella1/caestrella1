@@ -1,16 +1,17 @@
 import type { Profile } from '../types'
 
 // Edit this file with your own details.
-// `avatarUrl` is left empty on purpose — drop a photo into `src/assets/`
-// (e.g. `avatar.jpg`), import it above, and set it here. Until then the
-// <Avatar> component falls back to your initials.
+// `avatarUrl` points at your GitHub avatar (a public asset URL, no auth
+// needed: https://github.com/<user>.png or the avatars.githubusercontent.com
+// form below both work). Swap it for a local import from `src/assets/` if
+// you'd rather ship your own photo. Leave it empty to fall back to initials.
 export const profile: Profile = {
-  name: 'Carlos',
+  name: 'Carlos Estrella',
   role: 'Senior Software Engineer',
   company: 'LinkedIn',
   companyHref: 'https://linkedin.com',
   location: 'California, USA',
-  avatarUrl: '',
+  avatarUrl: 'https://avatars.githubusercontent.com/u/33430624?v=4',
   summary:
     "I build high-traffic, user-facing web products. Lately I'm focused on frontend architecture, TypeScript, and experimentation-driven development — and increasingly working across the full stack.",
   social: [

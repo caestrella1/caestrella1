@@ -21,11 +21,15 @@ export function HeroGradient() {
           viewBox="0 0 600 600"
         >
           {/* Clockwise from top-left: green, blue, green, blue — each pair
-              a lighter and a deeper shade. */}
-          <circle cx="0" cy="0" r="380" fill="var(--color-accent-300)" />
-          <circle cx="600" cy="0" r="380" fill="var(--color-hero-blue-light)" />
-          <circle cx="600" cy="600" r="380" fill="var(--color-accent-700)" />
-          <circle cx="0" cy="600" r="380" fill="var(--color-hero-blue-dark)" />
+              a lighter and a deeper shade. Radius 440 is deliberate: the
+              corners are 300√2 ≈ 424 units from dead center, so anything
+              smaller leaves an uncovered gap none of the four circles
+              reach — the blur softens color-to-color edges, but it isn't
+              wide enough to hide color-to-transparent ones. */}
+          <circle cx="0" cy="0" r="440" fill="var(--color-accent-300)" />
+          <circle cx="600" cy="0" r="440" fill="var(--color-hero-blue-light)" />
+          <circle cx="600" cy="600" r="440" fill="var(--color-accent-700)" />
+          <circle cx="0" cy="600" r="440" fill="var(--color-hero-blue-dark)" />
         </svg>
       </div>
     </div>

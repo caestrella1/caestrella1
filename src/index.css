@@ -20,11 +20,16 @@
   --color-accent-800: hsl(75 26% 25%);
   --color-accent-900: hsl(75 27% 19%);
 
-  /* Decorative blues for the hero gradient only (not part of the brand
-     accent scale) — same saturation/lightness as accent-300/700, just a
-     different hue, so the two greens and two blues read as matched pairs. */
-  --color-hero-blue-light: hsl(205 25% 68%);
-  --color-hero-blue-dark: hsl(205 25% 32%);
+  /* Dedicated colors for the hero mesh gradient only — richer than the
+     muted brand accent scale on purpose. Blending four ~25%-saturation
+     tones just converges toward grey; a mesh needs enough saturation
+     left over after blending to still read as four distinct hues. Same
+     hues as the brand accent (green) and a complementary blue, paired
+     light/dark shades at matching saturation and lightness. */
+  --color-hero-green-light: hsl(75 48% 70%);
+  --color-hero-green-dark: hsl(75 45% 30%);
+  --color-hero-blue-light: hsl(205 48% 70%);
+  --color-hero-blue-dark: hsl(205 45% 30%);
 
   /* A neutral scale with a slight green hue bias (matches the pistachio
      accent), instead of a pure grey — used everywhere `neutral-*` appears. */
@@ -108,7 +113,10 @@
   }
 
   .hero-gradient-spin {
-    filter: blur(32px);
+    /* No blur here on purpose: the radial gradients already blend
+       smoothly on their own (that's the point of a mesh gradient over
+       hard-edged shapes) — stacking a blur on top would just wash the
+       four colors into a near-uniform gray again. */
     animation: spin-slow 60s linear infinite;
     /* Off-center on purpose: a pivot at the visual center would leave the
        middle of the screen — most of a narrow mobile viewport — almost

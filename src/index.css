@@ -57,10 +57,10 @@
   }
   @keyframes spin-slow {
     from {
-      transform: translate(-50%, -50%) rotate(0deg);
+      transform: rotate(0deg);
     }
     to {
-      transform: translate(-50%, -50%) rotate(360deg);
+      transform: rotate(360deg);
     }
   }
 }
@@ -103,8 +103,13 @@
 
   .hero-gradient-spin {
     filter: blur(32px);
-    animation: spin-slow 90s linear infinite;
-    transform-origin: center;
+    animation: spin-slow 60s linear infinite;
+    /* Off-center on purpose: a pivot at the visual center would leave the
+       middle of the screen — most of a narrow mobile viewport — almost
+       perfectly still, since that single point is invariant under a pure
+       rotation. Offsetting it means every point in view, including the
+       center, actually sweeps through different color. */
+    transform-origin: 38% 42%;
   }
 
   @media (prefers-reduced-motion: reduce) {

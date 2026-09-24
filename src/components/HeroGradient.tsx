@@ -10,15 +10,21 @@ const LAYER_CLASSES =
 export function HeroGradient() {
   return (
     <div aria-hidden="true" className={`${LAYER_CLASSES} hero-gradient-mask`}>
-      <svg
-        className="hero-gradient-spin absolute left-1/2 top-1/2 h-[1400px] w-[1400px] -translate-x-1/2 -translate-y-1/2 opacity-60 dark:opacity-30"
-        viewBox="0 0 600 600"
-      >
-        <circle cx="150" cy="150" r="175" fill="var(--color-accent-300)" />
-        <circle cx="460" cy="180" r="150" fill="var(--color-accent-500)" />
-        <circle cx="420" cy="450" r="195" fill="var(--color-accent-700)" />
-        <circle cx="150" cy="440" r="140" fill="var(--color-accent-400)" />
-      </svg>
+      {/* Positioning lives on this wrapper, untouched by the animation, so
+          the rotation's off-center transform-origin (below) only ever
+          pivots the shape in place — it can't also drag the whole thing
+          off-screen the way combining both in one `transform` did. */}
+      <div className="absolute left-1/2 top-1/2 h-[1400px] w-[1400px] -translate-x-1/2 -translate-y-1/2">
+        <svg
+          className="hero-gradient-spin h-full w-full opacity-60 dark:opacity-30"
+          viewBox="0 0 600 600"
+        >
+          <circle cx="170" cy="170" r="220" fill="var(--color-accent-300)" />
+          <circle cx="440" cy="190" r="200" fill="var(--color-accent-500)" />
+          <circle cx="420" cy="440" r="230" fill="var(--color-accent-700)" />
+          <circle cx="170" cy="430" r="190" fill="var(--color-accent-400)" />
+        </svg>
+      </div>
     </div>
   )
 }

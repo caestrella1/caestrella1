@@ -53,6 +53,14 @@
       opacity: 1;
     }
   }
+  @keyframes spin-slow {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
 }
 
 @layer base {
@@ -82,30 +90,24 @@
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Edge-to-edge cover photo behind the whole intro, washed toward the
-     page background so the header text stays legible in both themes,
-     then fading fully into it before the projects section. */
-  .hero-wallpaper {
-    --wash: var(--color-neutral-50);
-    background-image:
-      linear-gradient(
-        to bottom,
-        color-mix(in srgb, var(--wash) 40%, transparent) 0%,
-        color-mix(in srgb, var(--wash) 55%, transparent) 45%,
-        var(--wash) 92%
-      ),
-      var(--hero-photo);
-    background-size: cover;
-    background-position: center 30%;
-    filter: saturate(1.05);
+  /* Edge-to-edge backdrop behind the whole intro: soft blurred color
+     fields, faded out toward the bottom (revealing the ordinary page
+     background beneath, so no theme-specific wash is needed) before it
+     reaches the projects section. */
+  .hero-gradient-mask {
+    mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 92%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 92%);
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme='light']) .hero-wallpaper {
-      --wash: var(--color-neutral-950);
-    }
+  .hero-gradient-spin {
+    filter: blur(42px);
+    animation: spin-slow 90s linear infinite;
+    transform-origin: center;
   }
-  :root[data-theme='dark'] .hero-wallpaper {
-    --wash: var(--color-neutral-950);
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-gradient-spin {
+      animation: none;
+    }
   }
 }

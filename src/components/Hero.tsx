@@ -1,13 +1,13 @@
 import { ThemeToggle } from './ThemeToggle'
 import { Avatar } from './Avatar'
-import { HeroWallpaper } from './HeroWallpaper'
+import { HeroGradient } from './HeroGradient'
 import { SocialLinks } from './SocialLinks'
 import type { Profile } from '../types'
 
 export function Hero({ profile }: { profile: Profile }) {
   return (
     <header className="relative isolate">
-      <HeroWallpaper />
+      <HeroGradient />
 
       <div className="absolute right-0 top-0 animate-fade-in">
         <ThemeToggle />

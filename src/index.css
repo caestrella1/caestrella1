@@ -82,13 +82,30 @@
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Blurred echo of the profile photo behind the intro, fading out
-     before it reaches the social links row. */
-  .hero-splash {
-    background-position: center 15%;
-    background-size: 200% auto;
-    filter: blur(60px) saturate(1.15);
-    -webkit-mask-image: radial-gradient(ellipse 55% 65% at 50% 8%, black 0%, black 35%, transparent 78%);
-    mask-image: radial-gradient(ellipse 55% 65% at 50% 8%, black 0%, black 35%, transparent 78%);
+  /* Edge-to-edge cover photo behind the whole intro, washed toward the
+     page background so the header text stays legible in both themes,
+     then fading fully into it before the projects section. */
+  .hero-wallpaper {
+    --wash: var(--color-neutral-50);
+    background-image:
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--wash) 40%, transparent) 0%,
+        color-mix(in srgb, var(--wash) 55%, transparent) 45%,
+        var(--wash) 92%
+      ),
+      var(--hero-photo);
+    background-size: cover;
+    background-position: center 30%;
+    filter: saturate(1.05);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .hero-wallpaper {
+      --wash: var(--color-neutral-950);
+    }
+  }
+  :root[data-theme='dark'] .hero-wallpaper {
+    --wash: var(--color-neutral-950);
   }
 }

@@ -1,18 +1,22 @@
+import type { CSSProperties } from 'react'
 import { ThemeToggle } from './ThemeToggle'
 import { Avatar } from './Avatar'
 import { SocialLinks } from './SocialLinks'
 import type { Profile } from '../types'
+import wallpaper from '../assets/hero-wallpaper.jpg'
+
+// Forest path photo by Johannes Plenio, sourced via the Openverse API
+// (openverse.org), licensed CC0 1.0 (no attribution required).
+// https://creativecommons.org/publicdomain/zero/1.0/
 
 export function Hero({ profile }: { profile: Profile }) {
   return (
     <header className="relative isolate">
-      {profile.avatarUrl && (
-        <div
-          aria-hidden="true"
-          className="hero-splash pointer-events-none absolute inset-x-0 top-0 -z-10 h-[460px] animate-fade-in opacity-50 dark:opacity-30"
-          style={{ backgroundImage: `url(${profile.avatarUrl})` }}
-        />
-      )}
+      <div
+        aria-hidden="true"
+        className="hero-wallpaper pointer-events-none absolute top-0 left-1/2 -z-10 h-[640px] w-screen -translate-x-1/2 animate-fade-in"
+        style={{ '--hero-photo': `url(${wallpaper})` } as CSSProperties}
+      />
 
       <div className="absolute right-0 top-0 animate-fade-in">
         <ThemeToggle />

@@ -7,30 +7,32 @@
   --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', system-ui, 'Segoe UI',
     Roboto, sans-serif;
 
-  --color-accent-50: #f0fdf4;
-  --color-accent-100: #dcfce7;
-  --color-accent-200: #bbf7d0;
-  --color-accent-300: #86efac;
-  --color-accent-400: #4ade80;
-  --color-accent-500: #22c55e;
-  --color-accent-600: #16a34a;
-  --color-accent-700: #15803d;
-  --color-accent-800: #166534;
-  --color-accent-900: #14532d;
+  /* A muted, olive-leaning "pistachio" green — Whipped Pistachio through
+     Verdant Pistachio — in place of a saturated Tailwind-style green. */
+  --color-accent-50: hsl(75 40% 95%);
+  --color-accent-100: hsl(75 33% 89%);
+  --color-accent-200: hsl(75 28% 79%);
+  --color-accent-300: hsl(75 25% 68%);
+  --color-accent-400: hsl(75 22% 57%);
+  --color-accent-500: hsl(75 23% 47%);
+  --color-accent-600: hsl(75 24% 39%);
+  --color-accent-700: hsl(75 25% 32%);
+  --color-accent-800: hsl(75 26% 25%);
+  --color-accent-900: hsl(75 27% 19%);
 
-  /* A neutral scale with a slight green hue bias (matches the accent),
-     instead of a pure grey — used everywhere `neutral-*` appears. */
-  --color-neutral-50: hsl(140 20% 98%);
-  --color-neutral-100: hsl(140 16% 95%);
-  --color-neutral-200: hsl(140 13% 90%);
-  --color-neutral-300: hsl(140 10% 82%);
-  --color-neutral-400: hsl(145 8% 62%);
-  --color-neutral-500: hsl(145 7% 46%);
-  --color-neutral-600: hsl(145 8% 34%);
-  --color-neutral-700: hsl(150 9% 25%);
-  --color-neutral-800: hsl(150 11% 16%);
-  --color-neutral-900: hsl(155 13% 10%);
-  --color-neutral-950: hsl(160 16% 6%);
+  /* A neutral scale with a slight green hue bias (matches the pistachio
+     accent), instead of a pure grey — used everywhere `neutral-*` appears. */
+  --color-neutral-50: hsl(80 20% 98%);
+  --color-neutral-100: hsl(80 16% 95%);
+  --color-neutral-200: hsl(80 13% 90%);
+  --color-neutral-300: hsl(80 10% 82%);
+  --color-neutral-400: hsl(82 8% 62%);
+  --color-neutral-500: hsl(82 7% 46%);
+  --color-neutral-600: hsl(82 8% 34%);
+  --color-neutral-700: hsl(84 9% 25%);
+  --color-neutral-800: hsl(84 11% 16%);
+  --color-neutral-900: hsl(86 13% 10%);
+  --color-neutral-950: hsl(88 16% 6%);
 
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-fade-in: fade-in 0.6s ease-out both;

@@ -14,7 +14,7 @@ export function Hero({ profile }: { profile: Profile }) {
     <header className="relative isolate">
       <div
         aria-hidden="true"
-        className="hero-wallpaper pointer-events-none absolute top-0 left-1/2 -z-10 h-[640px] w-screen -translate-x-1/2 animate-fade-in"
+        className="hero-wallpaper pointer-events-none absolute -top-16 left-1/2 -z-10 h-[704px] w-screen -translate-x-1/2 animate-fade-in sm:-top-24 sm:h-[736px]"
         style={{ '--hero-photo': `url(${wallpaper})` } as CSSProperties}
       />
 

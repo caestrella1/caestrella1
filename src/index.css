@@ -100,7 +100,7 @@
   }
 
   .hero-gradient-spin {
-    filter: blur(42px);
+    filter: blur(32px);
     animation: spin-slow 90s linear infinite;
     transform-origin: center;
   }

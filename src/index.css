@@ -20,6 +20,12 @@
   --color-accent-800: hsl(75 26% 25%);
   --color-accent-900: hsl(75 27% 19%);
 
+  /* Decorative blues for the hero gradient only (not part of the brand
+     accent scale) — same saturation/lightness as accent-300/700, just a
+     different hue, so the two greens and two blues read as matched pairs. */
+  --color-hero-blue-light: hsl(205 25% 68%);
+  --color-hero-blue-dark: hsl(205 25% 32%);
+
   /* A neutral scale with a slight green hue bias (matches the pistachio
      accent), instead of a pure grey — used everywhere `neutral-*` appears. */
   --color-neutral-50: hsl(80 20% 98%);

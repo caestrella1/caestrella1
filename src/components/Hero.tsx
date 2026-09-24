@@ -5,7 +5,15 @@ import type { Profile } from '../types'
 
 export function Hero({ profile }: { profile: Profile }) {
   return (
-    <header className="relative">
+    <header className="relative isolate">
+      {profile.avatarUrl && (
+        <div
+          aria-hidden="true"
+          className="hero-splash pointer-events-none absolute inset-x-0 top-0 -z-10 h-[460px] animate-fade-in opacity-50 dark:opacity-30"
+          style={{ backgroundImage: `url(${profile.avatarUrl})` }}
+        />
+      )}
+
       <div className="absolute right-0 top-0 animate-fade-in">
         <ThemeToggle />
       </div>

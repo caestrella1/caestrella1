@@ -81,4 +81,14 @@
   .transition-smooth {
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
+
+  /* Blurred echo of the profile photo behind the intro, fading out
+     before it reaches the social links row. */
+  .hero-splash {
+    background-position: center 15%;
+    background-size: 200% auto;
+    filter: blur(60px) saturate(1.15);
+    -webkit-mask-image: radial-gradient(ellipse 55% 65% at 50% 8%, black 0%, black 35%, transparent 78%);
+    mask-image: radial-gradient(ellipse 55% 65% at 50% 8%, black 0%, black 35%, transparent 78%);
+  }
 }

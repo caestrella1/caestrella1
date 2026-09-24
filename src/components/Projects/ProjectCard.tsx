@@ -8,7 +8,7 @@ export function ProjectCard({ project }: { project: Project }) {
       href={project.href}
       target="_blank"
       rel="noreferrer"
-      className={`group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-neutral-200/70 bg-white p-6 transition-smooth duration-300 hover:-translate-y-1 hover:border-accent-500/40 hover:shadow-xl hover:shadow-accent-500/10 dark:border-neutral-800 dark:bg-neutral-900/60 dark:hover:border-accent-500/40 ${
+      className={`group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-neutral-200/70 bg-white p-6 transition-smooth duration-300 hover:-translate-y-1 hover:border-accent-500/40 hover:shadow-xl hover:shadow-black/10 dark:border-neutral-800 dark:bg-neutral-900/60 dark:hover:border-accent-500/40 dark:hover:shadow-black/30 ${
         project.featured ? 'sm:col-span-2' : ''
       }`}
     >

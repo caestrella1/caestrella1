@@ -13,7 +13,7 @@ export function Button({ children, variant = 'primary', icon, className = '', ..
 
   const variants: Record<string, string> = {
     primary:
-      'bg-accent-600 text-white shadow-sm shadow-accent-600/20 hover:bg-accent-500 hover:shadow-md hover:shadow-accent-500/30',
+      'bg-accent-600 text-white shadow-sm shadow-black/10 hover:bg-accent-500 hover:shadow-md hover:shadow-black/15',
     secondary:
       'bg-neutral-100 text-neutral-900 hover:bg-neutral-200 dark:bg-neutral-800/80 dark:text-neutral-100 dark:hover:bg-neutral-800',
   }

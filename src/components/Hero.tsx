@@ -22,23 +22,23 @@ export function Hero({ profile }: { profile: Profile }) {
           {profile.name}
         </h1>
 
-        <p className="mt-3 animate-fade-up text-lg text-neutral-500 [animation-delay:140ms] dark:text-neutral-400">
+        <p className="mt-3 animate-fade-up text-lg text-neutral-900/70 [animation-delay:140ms] dark:text-white/70">
           {profile.role} at{' '}
           {profile.companyHref ? (
             <a
               href={profile.companyHref}
               target="_blank"
               rel="noreferrer"
-              className="font-medium text-neutral-700 underline decoration-accent-500/40 decoration-2 underline-offset-4 transition-colors hover:text-accent-600 dark:text-neutral-200 dark:hover:text-accent-400"
+              className="font-medium text-neutral-900/90 underline decoration-accent-500/40 decoration-2 underline-offset-4 transition-colors hover:text-accent-600 dark:text-white/90 dark:hover:text-accent-400"
             >
               {profile.company}
             </a>
           ) : (
-            <span className="font-medium text-neutral-700 dark:text-neutral-200">{profile.company}</span>
+            <span className="font-medium text-neutral-900/90 dark:text-white/90">{profile.company}</span>
           )}
         </p>
 
-        <p className="mt-1 animate-fade-up text-sm text-neutral-400 [animation-delay:180ms] dark:text-neutral-500">
+        <p className="mt-1 animate-fade-up text-sm text-neutral-900/50 [animation-delay:180ms] dark:text-white/50">
           {profile.location}
         </p>
 
@@ -46,7 +46,7 @@ export function Hero({ profile }: { profile: Profile }) {
           <SocialLinks links={profile.social} />
         </div>
 
-        <p className="mt-8 max-w-xl animate-fade-up text-balance text-base leading-relaxed text-neutral-500 [animation-delay:260ms] dark:text-neutral-400">
+        <p className="mt-8 max-w-xl animate-fade-up text-balance text-base leading-relaxed text-neutral-900/65 [animation-delay:260ms] dark:text-white/65">
           {profile.summary}
         </p>
       </div>

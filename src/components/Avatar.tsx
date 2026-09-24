@@ -33,7 +33,7 @@ export function Avatar({ name, src, size = 128 }: AvatarProps) {
       style={style}
       role="img"
       aria-label={name}
-      className="flex items-center justify-center rounded-full bg-gradient-to-br from-accent-400 to-accent-700 text-4xl font-semibold text-white shadow-lg shadow-accent-600/20 ring-1 ring-black/5 dark:ring-white/10"
+      className="flex items-center justify-center rounded-full bg-gradient-to-br from-accent-400 to-accent-700 text-4xl font-semibold text-white shadow-lg shadow-black/10 ring-1 ring-black/5 dark:shadow-black/40 dark:ring-white/10"
     >
       {getInitials(name)}
     </div>

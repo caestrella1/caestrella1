@@ -21,7 +21,7 @@ export function SocialLinks({ links }: { links: SocialLink[] }) {
             rel="noreferrer"
             aria-label={link.label}
             title={link.label}
-            className="inline-flex size-11 items-center justify-center rounded-full bg-neutral-100 text-neutral-600 transition-smooth duration-300 hover:-translate-y-0.5 hover:bg-accent-500 hover:text-white dark:bg-neutral-800/80 dark:text-neutral-300 dark:hover:bg-accent-500 dark:hover:text-white"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-neutral-200/70 bg-neutral-100 text-neutral-600 transition-smooth duration-300 hover:-translate-y-0.5 hover:border-accent-500 hover:bg-accent-500 hover:text-white dark:border-neutral-800 dark:bg-neutral-800/80 dark:text-neutral-300 dark:hover:border-accent-500 dark:hover:bg-accent-500 dark:hover:text-white"
           >
             <Icon className="size-[19px]" />
           </a>

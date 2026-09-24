@@ -9,22 +9,29 @@
 const LAYER_CLASSES =
   'pointer-events-none absolute -top-16 left-1/2 -z-10 h-[704px] w-screen -translate-x-1/2 overflow-hidden sm:-top-24 sm:h-[736px]'
 
-// The rotating shape is much taller (1400px) than the visible crop
-// (~710px), so only the *middle* band of the viewBox — roughly y 148 to
-// 452 out of 0–600 — is ever actually on screen. Corners planted at the
-// literal 0/600 viewBox extremes are never seen at all; every visible
-// pixel just sees a nearly-equal blend of all four, which reads as a flat
-// wash instead of a mesh. Insetting the four color sources to a smaller
-// square keeps them within (or just past) that visible band, so a corner's
-// own hue is still clearly dominant near itself.
-const MARGIN = 130
-const NEAR = MARGIN
-const FAR = 600 - MARGIN
+// The rect that carries the gradients is a hard-edged square — nothing
+// fades at ITS boundary, only within it. Making the wrapper bigger doesn't
+// fix that on its own: we tuned the gradients for full coverage, so the
+// rect is opaque-ish all the way to its own corners, and wherever that
+// edge rotates into view (inevitable on a wide viewport, at some angle)
+// it shows as a hard line. The real fix is a transparent BUFFER: extend
+// the canvas well past where the color falls off to true zero, so the
+// rect's edge always sits in dead space that matches the page background
+// — invisible regardless of viewport width or rotation angle.
+const NEAR = 90
+const FAR = 510
+const RADIUS = 420
+const COLOR_SPAN = 600
+// >= RADIUS guarantees zero opacity by the time you reach the buffer's
+// own outer edge (see the coverage check in the falloff comment below).
+const BUFFER = RADIUS
+const VIEWBOX = COLOR_SPAN + 2 * BUFFER
 
-// NEAR-to-FAR is 340 (adjacent corners), NEAR-to-center is ~240 (half the
-// 340×340 square's diagonal). RADIUS is tuned against those, not the full
-// viewBox, so the falloff stops below actually land where they're aimed.
-const RADIUS = 520
+// Scale (px per viewBox unit) is what actually determines how much of the
+// tuned color layout is visible in the ~710px-tall crop — keep it at the
+// value this layout was designed and verified against.
+const SCALE = 4
+const WRAPPER_SIZE = VIEWBOX * SCALE
 
 interface Corner {
   id: string
@@ -34,12 +41,13 @@ interface Corner {
 }
 
 // Clockwise from top-left: green, blue, green, blue — each pair a
-// lighter and a deeper shade.
+// lighter and a deeper shade. Shifted by BUFFER so the color region sits
+// in the middle of the padded viewBox.
 const CORNERS: Corner[] = [
-  { id: 'mesh-tl', cx: NEAR, cy: NEAR, color: 'var(--color-hero-green-light)' },
-  { id: 'mesh-tr', cx: FAR, cy: NEAR, color: 'var(--color-hero-blue-light)' },
-  { id: 'mesh-br', cx: FAR, cy: FAR, color: 'var(--color-hero-green-dark)' },
-  { id: 'mesh-bl', cx: NEAR, cy: FAR, color: 'var(--color-hero-blue-dark)' },
+  { id: 'mesh-tl', cx: NEAR + BUFFER, cy: NEAR + BUFFER, color: 'var(--color-hero-green-light)' },
+  { id: 'mesh-tr', cx: FAR + BUFFER, cy: NEAR + BUFFER, color: 'var(--color-hero-blue-light)' },
+  { id: 'mesh-br', cx: FAR + BUFFER, cy: FAR + BUFFER, color: 'var(--color-hero-green-dark)' },
+  { id: 'mesh-bl', cx: NEAR + BUFFER, cy: FAR + BUFFER, color: 'var(--color-hero-blue-dark)' },
 ]
 
 export function HeroGradient() {
@@ -49,10 +57,13 @@ export function HeroGradient() {
           the rotation's off-center transform-origin (below) only ever
           pivots the shape in place — it can't also drag the whole thing
           off-screen the way combining both in one `transform` did. */}
-      <div className="absolute left-1/2 top-1/2 h-[1400px] w-[1400px] -translate-x-1/2 -translate-y-1/2">
+      <div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        style={{ width: WRAPPER_SIZE, height: WRAPPER_SIZE }}
+      >
         <svg
-          className="hero-gradient-spin h-full w-full opacity-90 dark:opacity-60"
-          viewBox="0 0 600 600"
+          className="hero-gradient-spin h-full w-full opacity-95 dark:opacity-70"
+          viewBox={`0 0 ${VIEWBOX} ${VIEWBOX}`}
         >
           <defs>
             {CORNERS.map((c) => (
@@ -60,15 +71,19 @@ export function HeroGradient() {
                 {/* These four gradients stack with normal alpha
                     compositing, so whichever is painted last would
                     otherwise dominate everywhere it has meaningful
-                    opacity — including at other corners. Falling off to
-                    ~0.15 by the adjacent-corner distance (~65% of RADIUS)
-                    keeps each corner's own hue clearly dominant near
-                    itself; the ~50%-radius stop is roughly dead center,
-                    where the real blend happens. */}
+                    opacity — including at other corners. Opacity hits 0
+                    right around the adjacent-corner distance (FAR-NEAR,
+                    which equals RADIUS) so neighboring corners don't
+                    bleed into each other; the ~70%-radius stop lands
+                    close to dead center, where the real blend happens. By
+                    the outer BUFFER ring (>= RADIUS past the color
+                    region), every corner's gradient has already fully
+                    reached 0 — that's what keeps the rect's own edge
+                    invisible. */}
                 <stop offset="0%" stopColor={c.color} stopOpacity="1" />
-                <stop offset="46%" stopColor={c.color} stopOpacity="0.5" />
-                <stop offset="65%" stopColor={c.color} stopOpacity="0.15" />
-                <stop offset="95%" stopColor={c.color} stopOpacity="0" />
+                <stop offset="50%" stopColor={c.color} stopOpacity="0.6" />
+                <stop offset="70%" stopColor={c.color} stopOpacity="0.35" />
+                <stop offset="100%" stopColor={c.color} stopOpacity="0" />
               </radialGradient>
             ))}
           </defs>
@@ -76,7 +91,7 @@ export function HeroGradient() {
               references differs — so they layer via alpha blending
               instead of each shape occluding the ones beneath it. */}
           {CORNERS.map((c) => (
-            <rect key={c.id} width="600" height="600" fill={`url(#${c.id})`} />
+            <rect key={c.id} width={VIEWBOX} height={VIEWBOX} fill={`url(#${c.id})`} />
           ))}
         </svg>
       </div>

@@ -18,6 +18,20 @@
   --color-accent-800: #166534;
   --color-accent-900: #14532d;
 
+  /* A neutral scale with a slight green hue bias (matches the accent),
+     instead of a pure grey — used everywhere `neutral-*` appears. */
+  --color-neutral-50: hsl(140 20% 98%);
+  --color-neutral-100: hsl(140 16% 95%);
+  --color-neutral-200: hsl(140 13% 90%);
+  --color-neutral-300: hsl(140 10% 82%);
+  --color-neutral-400: hsl(145 8% 62%);
+  --color-neutral-500: hsl(145 7% 46%);
+  --color-neutral-600: hsl(145 8% 34%);
+  --color-neutral-700: hsl(150 9% 25%);
+  --color-neutral-800: hsl(150 11% 16%);
+  --color-neutral-900: hsl(155 13% 10%);
+  --color-neutral-950: hsl(160 16% 6%);
+
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-fade-in: fade-in 0.6s ease-out both;
 
@@ -54,7 +68,7 @@
   }
 
   body {
-    @apply bg-white text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-50;
+    @apply bg-neutral-50 text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-50;
     font-feature-settings: 'ss01' on, 'ss02' on;
   }
 
